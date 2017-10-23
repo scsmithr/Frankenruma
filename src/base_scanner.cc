@@ -14,10 +14,11 @@ void BaseScanner::onScanResult(val callback) {
     listener_ = new OnScanResultListener(callback);
 }
 
-void BaseScanner::scan(const string& text) {
+void BaseScanner::scan(const string& text, int offset) {
     OnigRegion *region = onig_region_new();
+    offset_ = offset;
 
-    UChar *c_str = (UChar*)text.c_str();
+    UChar *c_str = (UChar*)text.c_str() + offset_;
     UChar *end = c_str + onigenc_str_bytelen_null(ONIG_ENCODING_UTF8, c_str);
     int status = onig_scan(reg_->GetRegex(), c_str, end, region, ONIG_OPTION_CAPTURE_GROUP, BaseScanner::scanCallback, this);
     if (status < 0) {
@@ -36,7 +37,7 @@ int BaseScanner::scanCallback(int n, int r, OnigRegion* region, void* arg) {
 int BaseScanner::processScan(OnigRegion* region) {
     for (int i = 0; i < region->num_regs; i++) {
         int length = region->end[i] - region->beg[i];
-        listener_->fire(region->beg[i], length);
+        listener_->fire(region->beg[i] + offset_, length);
     }
     return 0;
 }

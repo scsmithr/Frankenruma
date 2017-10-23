@@ -28,7 +28,7 @@ public:
 
     void onScanResult(val callback);
 
-    void scan(const string& text);
+    void scan(const string& text, int offset);
 
 private:
     int processScan(OnigRegion* region);
@@ -37,7 +37,7 @@ private:
 
     OnScanResultListener *listener_;
     Regexp *reg_;
-
+    int offset_;
 };
 
 EMSCRIPTEN_BINDINGS(base_scanner) {

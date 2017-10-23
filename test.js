@@ -2030,7 +2030,7 @@ function _emscripten_asm_const_i(code) {
 
 STATIC_BASE = Runtime.GLOBAL_BASE;
 
-STATICTOP = STATIC_BASE + 278560;
+STATICTOP = STATIC_BASE + 278576;
 /* global initializers */  __ATINIT__.push({ func: function() { __GLOBAL__sub_I_base_scanner_cc() } }, { func: function() { __GLOBAL__sub_I_bind_cpp() } });
 
 
@@ -2039,7 +2039,7 @@ memoryInitializer = null;
 
 
 
-var STATIC_BUMP = 278560;
+var STATIC_BUMP = 278576;
 Module["STATIC_BASE"] = STATIC_BASE;
 Module["STATIC_BUMP"] = STATIC_BUMP;
 
@@ -4059,9 +4059,9 @@ function nullFunc_iiiiii(x) { Module["printErr"]("Invalid function pointer calle
 
 function nullFunc_viiii(x) { Module["printErr"]("Invalid function pointer called with signature 'viiii'. Perhaps this is an invalid value (e.g. caused by calling a virtual method on a NULL pointer)? Or calling a function with an incorrect type, which will fail? (it is worth building your source files with -Werror (warnings are errors), as warnings can indicate undefined behavior which can cause this)");  Module["printErr"]("Build with ASSERTIONS=2 for more info.");abort(x) }
 
-Module['wasmTableSize'] = 1600;
+Module['wasmTableSize'] = 1664;
 
-Module['wasmMaxTableSize'] = 1600;
+Module['wasmMaxTableSize'] = 1664;
 
 function invoke_iiii(index,a1,a2,a3) {
   try {
